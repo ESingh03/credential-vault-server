@@ -2,7 +2,10 @@ const express = require('express');
 const router = express.Router();
 const db = require('../db');
 
-// Function to check map value with timeout logic
+
+
+router.post('/recieve_request', async (req, res) => {
+  // Function to check map value with timeout logic
 function checkMapValue(key, timeout) {
   return new Promise((resolve, reject) => {
     const start = Date.now();
@@ -24,8 +27,6 @@ function checkMapValue(key, timeout) {
     }, 500); // Interval between checks
   });
 }
-
-router.post('/recieve_request', async (req, res) => {
   const { type, username, password, domain } = req.body;
   var requests = req.app.locals.requests;
   let timeoutId; // Declare the timeout variable to clear it later
