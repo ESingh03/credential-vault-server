@@ -47,12 +47,18 @@ router.post('/recieve_request', async (req, res) => {
                 
                 console.log(`Data with key ${username} removed from temporary store.`);
                 return res.json({msg:'Timeout'});
+                console.log(`Data.`);
+
             }, 30000);
             try {
+              console.log(`Data with`);
+
                 const value = await checkMapValue(username, 50000);
                 clearTimeout(timeoutId);
                 return res.json(value);
               } catch (error) {
+                console.log(`Data with key`);
+
                 return res.status(500).json(error.message);
               }
         }
