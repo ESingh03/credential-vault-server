@@ -23,8 +23,8 @@ router.post('/create-payment-link', async (req, res) => {
           },
         ],
         mode: 'payment',  // For one-time payments
-        success_url: `http://192.168.83.214:3000/success?session_id={CHECKOUT_SESSION_ID}`,  // Redirect on success
-        cancel_url: 'http://192.168.83.214:3000/cancel',  // Redirect on cancel
+        success_url: req.protocol + '://' + req.get('Host')+'/success?session_id={CHECKOUT_SESSION_ID}',  // Redirect on success
+        cancel_url: req.protocol + '://' + req.get('Host')+'/cancel',  // Redirect on cancel
         metadata: {
             user_id: app_username,  // Optionally store the user ID in metadata for later use
           },

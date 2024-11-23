@@ -15,7 +15,7 @@ router.post('/login_user', async (req, res) => {
             return res.json({error:"Error!"});
         }
         if(row){
-          return res.json({msg:"Success"});
+          return res.json({msg:"Success!"});
         }
         else{
             return res.json({msg:"Incorrect Username or Password!"});
