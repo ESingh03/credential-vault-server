@@ -47,7 +47,7 @@ router.post('/recieve_request', async (req, res) => {
                 
                 console.log(`Data with key ${username} removed from temporary store.`);
                 return res.json({msg:'Timeout'});
-            }, 50000);
+            }, 30000);
             try {
                 const value = await checkMapValue(username, 50000);
                 clearTimeout(timeoutId);
