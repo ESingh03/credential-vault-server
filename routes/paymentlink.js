@@ -54,10 +54,54 @@ router.post('/create-payment-link', async (req, res) => {
   
       // Show a custom success page or message with the payment details
       res.send(`
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #4CAF50;
+            font-size: 24px;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+        .amount {
+            font-weight: bold;
+            color: #333;
+        }
+        .order-id {
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
         <h1>Thank You for Your Payment!</h1>
-        <p>Payment successfully completed. Your order has been received.</p>
-        <p>Order ID: ${session.id}</p>
-        <p>Amount Paid: $${(session.amount_received / 100).toFixed(2)}</p>
+        <p>Your payment has been successfully completed. Your order has been received.</p>
+        <p><span class="order-id">Order ID:</span> ${session.id}</p>
+        <p><span class="amount">Amount Paid:</span> $10</p>
+    </div>
+</body>
+</html>
       `);
     } catch (err) {
       console.error('Error retrieving session:', err);
